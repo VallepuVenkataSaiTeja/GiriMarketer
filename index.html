@@ -1,0 +1,2259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>GiriMarketer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@400;600;700&family=Inter:wght@400;500;600;700;900&family=Montserrat:wght@600;700;800&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.cdnfonts.com/css/gilroy" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <style>
+    :root {
+      --bs-primary: #6343FF;
+      --bs-primary-rgb: 99, 67, 255;
+      --dark-bg: #0B0B15;
+      --text-muted-custom: #a8a8b8;
+      --hero-header-bg:
+        radial-gradient(83.31% 129.08% at 70% 30%, rgba(78, 47, 255, 0.15) 0%, rgba(78, 47, 255, 0) 50%),
+        radial-gradient(103.76% 160.76% at 10% 80%, rgba(251, 139, 74, 0.08) 0%, rgba(251, 139, 74, 0) 40%),
+        linear-gradient(0deg, #13121d, #13121d);
+    }
+
+    html {
+      background: #fafafa;
+      overflow-x: clip;
+      width: 100%;
+    }
+
+    @media (min-width: 992px) {
+      html {
+        scrollbar-gutter: stable;
+      }
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: #1a1a24;
+      margin: 0;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: clip;
+      background: #fafafa;
+      min-height: 100%;
+    }
+
+    h1, h2, h3, h4, h5, h6, .font-display {
+      font-family: 'Montserrat', 'Inter', sans-serif;
+    }
+
+    .bg-dark-custom {
+      background-color: var(--dark-bg) !important;
+    }
+
+    .text-gradient {
+      background: linear-gradient(90deg, #4e2fff 0%, #7c63ff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-title {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 64px;
+      line-height: 120%;
+      letter-spacing: -3.2px;
+      text-align: center;
+      vertical-align: middle;
+      color: #ffffff;
+    }
+
+    @media (max-width: 991px) {
+      .hero-title {
+        font-size: 48px;
+        letter-spacing: -2.4px;
+      }
+    }
+
+    @media (max-width: 575px) {
+      .hero-title {
+        font-size: 2rem;
+        letter-spacing: -1.2px;
+      }
+    }
+
+    /* Hero block gradient (header bar is solid #13121d) */
+    .hero-banner {
+      background: var(--hero-header-bg);
+      background-color: #13121d;
+      position: relative;
+      /* Match combined height of fixed nav (includes safe-area padding on .site-navbar) */
+      padding-top: calc(4.75rem + env(safe-area-inset-top, 0px));
+      scroll-margin-top: calc(5rem + env(safe-area-inset-top, 0px));
+    }
+
+    @media (min-width: 992px) {
+      .hero-banner {
+        padding-top: calc(5rem + env(safe-area-inset-top, 0px));
+      }
+    }
+
+    /* Fixed header: solid bar (hero below keeps full gradient) */
+    .site-navbar {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box;
+      z-index: 1050;
+      background: #13121d;
+      padding-top: env(safe-area-inset-top, 0px);
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+
+    .site-navbar .navbar {
+      background: transparent !important;
+      --bs-navbar-bg: transparent;
+    }
+
+    .hero-glow {
+      position: relative;
+      overflow: hidden;
+      background: transparent;
+    }
+
+    .hero-glow .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-intro-heading {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 40px;
+      line-height: 120%;
+      letter-spacing: 0;
+      color: #222222;
+      vertical-align: middle;
+    }
+
+    .section-intro-body {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 140%;
+      letter-spacing: 0;
+      color: #222222;
+      vertical-align: middle;
+    }
+
+    @media (max-width: 767px) {
+      .section-intro-heading {
+        font-size: 28px;
+      }
+    }
+
+    .hero-subtext {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 29.25px;
+      letter-spacing: 0;
+      text-align: center;
+      vertical-align: middle;
+      color: #fafafa;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    @media (min-width: 576px) {
+      .hero-cta-row {
+        flex-direction: row;
+      }
+    }
+
+    .btn-hero-primary {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: 0;
+      text-align: center;
+      vertical-align: middle;
+      color: #fafafa !important;
+      background-color: #4e2fff;
+      border: 1px solid #4e2fff;
+      border-radius: 9999px;
+      padding: 20px 40px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: none;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .btn-hero-primary .fa-arrow-right {
+      width: 16px;
+      height: 16px;
+      font-size: 16px;
+      line-height: 16px;
+      flex-shrink: 0;
+    }
+
+    .btn-hero-primary:hover {
+      background-color: #5b40ff;
+      border-color: #5b40ff;
+      color: #fafafa !important;
+    }
+
+    .btn-hero-secondary {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: 0;
+      text-align: center;
+      vertical-align: middle;
+      color: #e4e0f0 !important;
+      background-color: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border: 1px solid #4745574d;
+      border-radius: 9999px;
+      padding: 20px 40px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: none;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .btn-hero-secondary:hover {
+      background-color: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+      color: #e4e0f0 !important;
+    }
+
+    .navbar .architect-brand {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 900;
+      font-size: 24px;
+      line-height: 32px;
+      letter-spacing: -1.2px;
+      color: #ffffff !important;
+      text-transform: uppercase;
+      vertical-align: middle;
+    }
+
+    .navbar .nav-link-main {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: -0.35px;
+      color: #94a3b8 !important;
+      text-transform: uppercase;
+      vertical-align: middle;
+    }
+
+    .navbar .nav-link-main:hover,
+    .navbar .nav-link-main:focus {
+      color: #e2e8f0 !important;
+    }
+
+    .btn-nav-cta {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: -0.35px;
+      color: #d6d1ff !important;
+      background-color: #4e2fff;
+      border: 1px solid #4e2fff;
+      border-radius: 9999px;
+      padding: 10px 24px;
+      text-transform: uppercase;
+      text-align: center;
+      vertical-align: middle;
+      box-shadow: none;
+    }
+
+    .btn-nav-cta:hover {
+      background-color: #5b40ff;
+      border-color: #5b40ff;
+      color: #d6d1ff !important;
+    }
+
+    .btn-nav-cta:active,
+    .btn-nav-cta:focus-visible {
+      background-color: #4530e8 !important;
+      border-color: #4530e8 !important;
+      color: #d6d1ff !important;
+    }
+
+    /* Mobile: sidebar offcanvas (lg+ uses inline nav) */
+    @media (max-width: 991.98px) {
+      #navSidebar {
+        --bs-offcanvas-width: min(320px, 88vw);
+      }
+    }
+
+    .nav-offcanvas-sidebar {
+      background-color: #13121d !important;
+      color: #f8fafc;
+      z-index: 1060 !important;
+    }
+
+    .nav-offcanvas-sidebar .offcanvas-header {
+      border: none !important;
+      flex-shrink: 0;
+      padding: 1rem 1.25rem 0.75rem;
+      justify-content: flex-end;
+    }
+
+    .nav-offcanvas-sidebar .offcanvas-header .btn-close {
+      margin: 0;
+      padding: 0.5rem;
+      opacity: 0.9;
+    }
+
+    .nav-offcanvas-sidebar .nav-link-main {
+      font-size: 1rem;
+      padding: 0.65rem 0;
+    }
+
+    .nav-offcanvas-sidebar .btn-nav-cta {
+      width: 100%;
+      justify-content: center;
+    }
+
+    /* No inner scroll track for short menu; height = content */
+    .nav-offcanvas-sidebar.offcanvas {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: stretch;
+      height: auto !important;
+      max-height: min(100dvh, 100vh) !important;
+      overflow: hidden !important;
+      overscroll-behavior: contain;
+    }
+
+    .nav-offcanvas-sidebar .offcanvas-body {
+      flex: 0 0 auto !important;
+      overflow: hidden !important;
+      overflow-y: hidden !important;
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+
+    .btn-primary {
+      --bs-btn-bg: #6343FF;
+      --bs-btn-border-color: #6343FF;
+      --bs-btn-hover-bg: #5235e6;
+      --bs-btn-hover-border-color: #5235e6;
+      --bs-btn-active-bg: #452cc9;
+      --bs-btn-active-border-color: #452cc9;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      padding: 0.55rem 1.35rem;
+    }
+
+    .btn-outline-light.rounded-custom {
+      border-radius: 0.5rem;
+      font-weight: 600;
+      padding: 0.55rem 1.35rem;
+    }
+
+    /* Outer: full container width, bg image; padding = visible “frame” of image around inner glass box */
+    .stats-section {
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      background-image: url('stats-section-bg.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border-radius: 14px;
+      overflow: hidden;
+      padding: 20px 16px;
+    }
+
+    @media (min-width: 576px) {
+      .stats-section {
+        padding: 24px 28px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .stats-section {
+        padding: 28px 36px;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .stats-section {
+        padding: 32px 48px;
+      }
+    }
+
+    /* Inner frosted panel (glass) — inset inside the image frame */
+    .stats-panel {
+      background: #ffffff26;
+      border-radius: 14px;
+      padding: 38px 58px;
+    }
+
+    @media (max-width: 575px) {
+      .stats-panel {
+        padding: 28px 20px;
+      }
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    @media (min-width: 768px) {
+      .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .stat-number {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 120%;
+      letter-spacing: 0;
+      color: #ffffff;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .stat-label {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 29.25px;
+      letter-spacing: 0;
+      color: #ffffff;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    @media (max-width: 575px) {
+      .stat-number {
+        font-size: 28px;
+      }
+
+      .stat-label {
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+
+    .platforms-heading {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 40px;
+      line-height: 120%;
+      letter-spacing: 0;
+      color: #222222;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    @media (max-width: 767px) {
+      .platforms-heading {
+        font-size: 28px;
+      }
+    }
+
+    .platform-marquee {
+      overflow: hidden;
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
+    .platform-marquee:last-child {
+      margin-bottom: 0;
+    }
+
+    .platform-marquee__track {
+      display: flex;
+      width: max-content;
+      animation: platform-marquee-scroll 45s linear infinite;
+    }
+
+    .platform-marquee--reverse .platform-marquee__track {
+      animation-direction: reverse;
+      animation-duration: 55s;
+    }
+
+    @keyframes platform-marquee-scroll {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .platform-marquee__track {
+        animation: none;
+      }
+    }
+
+    .platform-marquee__half {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+      padding-right: 10px;
+    }
+
+    .platform-marquee-card {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 10px;
+      box-sizing: border-box;
+      min-height: 5.5rem;
+      height: auto;
+      background: #fff;
+      border: 1px solid #00000026;
+      border-radius: 20px;
+      padding: 25px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .platform-marquee-card img {
+      height: 50px;
+      width: auto;
+      max-width: none;
+      object-fit: contain;
+      flex-shrink: 0;
+      vertical-align: middle;
+    }
+
+    .platform-marquee-card span {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 600;
+      font-size: 30px;
+      line-height: 120%;
+      letter-spacing: 0;
+      color: #000000;
+      vertical-align: middle;
+    }
+
+    @media (max-width: 575px) {
+      .platform-marquee-card {
+        min-height: 4.75rem;
+        padding: 16px 20px;
+      }
+
+      .platform-marquee-card span {
+        font-size: 18px;
+      }
+
+      .platform-marquee-card img {
+        height: 36px;
+      }
+    }
+
+    .services-section-heading {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 40px;
+      line-height: 120%;
+      letter-spacing: 0;
+      color: #222222;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .services-section-lead {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 140%;
+      letter-spacing: 0;
+      color: #222222;
+      text-align: center;
+      vertical-align: middle;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (max-width: 767px) {
+      .services-section-heading {
+        font-size: 28px;
+      }
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1.25rem;
+      overflow: visible;
+      align-items: stretch;
+    }
+
+    .services-grid__cell {
+      min-width: 0;
+      overflow: visible;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .services-grid__cell--2 {
+      grid-column: span 3;
+    }
+
+    .services-grid__cell--3 {
+      grid-column: span 2;
+    }
+
+    .services-grid__cell--6 {
+      grid-column: span 6;
+    }
+
+    @media (max-width: 767px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid__cell--2,
+      .services-grid__cell--3,
+      .services-grid__cell--6 {
+        grid-column: span 1;
+      }
+    }
+
+    .service-card {
+      position: relative;
+      flex: 1 1 auto;
+      width: 100%;
+      min-height: 0;
+      border-radius: 20px;
+      padding: 1.5rem 1.5rem 1.75rem;
+      /* Space below badge (1rem + 2.5rem) + 92px gap before title */
+      padding-top: calc(1rem + 2.5rem + 92px);
+      background: #ffffff;
+      border: 1px solid #00000026;
+      transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+      /* Allow arrow + white ring to sit above the card edge (Figma-style) */
+      overflow: visible;
+      isolation: isolate;
+    }
+
+    .service-card:hover {
+      background: #4e2fff;
+      border-color: #ffffff;
+      box-shadow: 0 12px 32px rgba(78, 47, 255, 0.25);
+    }
+
+    .service-card__badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      z-index: 4;
+      min-width: 2rem;
+      min-height: 2rem;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9999px;
+      font-family: 'Gilroy', 'Inter', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 130%;
+      letter-spacing: -0.02em;
+      vertical-align: middle;
+      text-transform: capitalize;
+      color: #0f0f0f80;
+      background: #86827f80;
+      transition: color 0.2s ease, background 0.2s ease;
+    }
+
+    .service-card:hover .service-card__badge {
+      color: #000000;
+      background: #ffffff;
+    }
+
+    /* White outer ring stacks above the card; inner disc + icon below that layer */
+    .service-card__arrow {
+      position: absolute;
+      top: -4px;
+      right: -5px;
+      z-index: 10;
+      width: 3.875rem;
+      height: 3.875rem;
+      padding: 6px;
+      border: none;
+      border-radius: 50%;
+      background: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-sizing: border-box;
+    }
+
+    .service-card__arrow-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.25s ease;
+    }
+
+    .service-card:hover .service-card__arrow-inner {
+      background: linear-gradient(277.2deg, #4e2fff 37.79%, #ba998c 93.22%);
+    }
+
+    .service-card__arrow-icon {
+      font-size: 1.1rem;
+      line-height: 1;
+      color: rgba(34, 34, 34, 0.55);
+      transition: transform 0.3s ease, color 0.25s ease;
+    }
+
+    .service-card:hover .service-card__arrow-icon {
+      transform: rotate(-40.76deg);
+      color: #ffffff;
+    }
+
+    .service-card__body {
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-card-title {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 130%;
+      letter-spacing: -0.02em;
+      vertical-align: middle;
+      text-transform: capitalize;
+      color: #22222280;
+      margin: 0;
+    }
+
+    .service-card-text {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 130%;
+      letter-spacing: -0.02em;
+      text-transform: capitalize;
+      color: #22222280;
+      margin: 0;
+      margin-top: 0.75rem;
+    }
+
+    .service-card-text .service-card__caps {
+      text-transform: uppercase;
+      letter-spacing: inherit;
+    }
+
+    .service-card:hover .service-card-title,
+    .service-card:hover .service-card-text {
+      color: #ffffff;
+    }
+
+    .why-section {
+      background: #4e2fff;
+    }
+
+    .why-heading {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 40px;
+      line-height: 120%;
+      letter-spacing: 0;
+      color: #ffffff;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    @media (max-width: 767px) {
+      .why-heading {
+        font-size: 28px;
+      }
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      align-items: stretch;
+    }
+
+    @media (max-width: 991px) {
+      .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 575px) {
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .why-card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 25px;
+      flex: 1 1 auto;
+      min-height: 0;
+      width: 100%;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .why-icon-wrap {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: #4e2fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-bottom: 1rem;
+    }
+
+    .why-icon-wrap img {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .why-card-title {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 130%;
+      letter-spacing: -0.02em;
+      color: #222222;
+      text-align: center;
+      vertical-align: middle;
+      text-transform: capitalize;
+      margin: 0 0 0.75rem;
+    }
+
+    .why-card-text {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 130%;
+      letter-spacing: 0;
+      color: #222222;
+      text-align: center;
+      text-transform: capitalize;
+      margin: 0;
+      flex: 1 1 auto;
+    }
+
+    .how-section {
+      background: #f5f5f5;
+    }
+
+    .how-heading {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 140%;
+      letter-spacing: -0.01em;
+      color: #222222;
+      margin: 0 0 1.5rem;
+    }
+
+    @media (max-width: 767px) {
+      .how-heading {
+        font-size: 28px;
+      }
+    }
+
+    .how-learn-btn {
+      font-family: 'Darker Grotesque', system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 30px;
+      letter-spacing: 0;
+      color: #ffffff !important;
+      background: #4e2fff;
+      border: none;
+      border-radius: 999px;
+      padding: 0.65rem 1.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .how-learn-btn:hover {
+      background: #3d26d6 !important;
+      color: #ffffff !important;
+    }
+
+    .how-step {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    @media (min-width: 576px) {
+      .how-step {
+        flex-direction: row;
+        align-items: center;
+        gap: 1.25rem;
+      }
+    }
+
+    .how-step:first-of-type {
+      padding-top: 0;
+    }
+
+    .how-step:last-of-type {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .how-step-img {
+      width: 150px;
+      max-width: 100%;
+      height: auto;
+      aspect-ratio: 150 / 109;
+      object-fit: cover;
+      flex-shrink: 0;
+      display: block;
+    }
+
+    @media (max-width: 575px) {
+      .how-step-img {
+        width: 100%;
+      }
+    }
+
+    .how-step-title {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 30px;
+      letter-spacing: 0;
+      color: #000000;
+      margin: 0 0 0.5rem;
+    }
+
+    .how-step-text {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 130%;
+      letter-spacing: 0;
+      color: #222222;
+      text-transform: capitalize;
+      margin: 0;
+    }
+
+    /* Testimonials — same image + glass treatment as stats section */
+    .testimonials-section {
+      background: #f5f5f5;
+    }
+
+    .testimonials-heading {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 140%;
+      letter-spacing: -0.01em;
+      color: #222222;
+      margin: 0;
+    }
+
+    @media (max-width: 991px) {
+      .testimonials-heading {
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .testimonials-heading {
+        font-size: 28px;
+      }
+    }
+
+    .testimonials-scroller {
+      display: flex;
+      align-items: stretch;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      padding-bottom: 4px;
+    }
+
+    .testimonials-scroller::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Exactly 1 full card + half of the next (1.5 cards visible in the track width) */
+    .testimonial-slide {
+      flex: 0 0 calc((100% - 16px) / 1.5);
+      scroll-snap-align: start;
+      min-width: 0;
+      box-sizing: border-box;
+      display: flex;
+      align-items: stretch;
+    }
+
+    .testimonial-card-frame {
+      flex: 1 1 auto;
+      width: 100%;
+      min-height: 220px;
+      box-sizing: border-box;
+      border-radius: 14px;
+      overflow: hidden;
+      padding: 18px;
+      background-image: url('stats-section-bg.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      border: 1px solid #ffffff80;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .testimonial-card-panel {
+      flex: 1 1 auto;
+      min-height: 0;
+      border-radius: 10px;
+      background: #ffffff26;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 22px 24px;
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+    }
+
+    .testimonial-quote {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 130%;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      text-transform: capitalize;
+      margin: 0 0 0.75rem;
+      flex: 1 1 auto;
+      min-height: 0;
+    }
+
+    .testimonial-divider {
+      border: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.22);
+      margin: 0 0 0.75rem;
+      opacity: 1;
+    }
+
+    .testimonial-name {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 29.25px;
+      letter-spacing: 0;
+      color: #ffffff;
+      vertical-align: middle;
+    }
+
+    .testimonial-role {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 130%;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      text-transform: capitalize;
+      margin-top: 0.15rem;
+    }
+
+    .testimonial-stars {
+      color: #fdcc0d;
+      font-size: 1rem;
+      line-height: 1;
+      letter-spacing: 2px;
+      flex-shrink: 0;
+    }
+
+    .testimonial-stars .bi {
+      font-size: 1rem;
+    }
+
+    .testimonials-nav-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      cursor: pointer;
+      transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+    }
+
+    /* Normal: light (reverse of hover). Both arrows match — no default purple on “next”. */
+    .testimonials-nav-btn--prev,
+    .testimonials-nav-btn--next {
+      background: #ffffff;
+      border: 1px solid #d1d5db;
+      color: #6b7280;
+    }
+
+    .testimonials-nav-btn:hover:not(:disabled) {
+      background: #4e2fff;
+      border-color: #4e2fff;
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(78, 47, 255, 0.25);
+      transform: translateY(-1px) scale(1.06);
+    }
+
+    .testimonials-nav-btn:active:not(:disabled) {
+      background: #3d26d6;
+      border-color: #3d26d6;
+      color: #ffffff;
+      transform: translateY(0) scale(1);
+      box-shadow: 0 2px 8px rgba(78, 47, 255, 0.25);
+    }
+
+    .testimonials-nav-btn:focus-visible {
+      outline: 2px solid #4e2fff;
+      outline-offset: 2px;
+    }
+
+    .testimonials-nav-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* Same arrow style as service cards (bi-arrow-right family) */
+    .testimonials-nav-btn .bi {
+      font-size: 1.35rem;
+      line-height: 1;
+    }
+
+    .faq-page-section {
+      background: #fafafa;
+    }
+
+    .faq-wrap {
+      max-width: 910px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .faq-heading {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 140%;
+      letter-spacing: -0.01em;
+      text-align: center;
+      color: #222222;
+      margin: 0 0 2rem;
+    }
+
+    @media (max-width: 767px) {
+      .faq-heading {
+        font-size: 28px;
+      }
+    }
+
+    .accordion-faq.accordion {
+      --bs-accordion-border-width: 0;
+      --bs-accordion-border-radius: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .accordion-faq .accordion-item {
+      border: none !important;
+      border-radius: 0.75rem !important;
+      margin-bottom: 0;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    /* Open or animating: keep one purple block (avoids header/body color flashing vs .show timing) */
+    .accordion-faq .accordion-item:has(.accordion-collapse.show),
+    .accordion-faq .accordion-item:has(.accordion-collapse.collapsing) {
+      background: #4e2fff;
+    }
+
+    .accordion-faq .accordion-button {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 130%;
+      letter-spacing: -0.02em;
+      text-transform: capitalize;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      padding: 1.125rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      text-align: left;
+      width: 100%;
+      border: none;
+      border-bottom: none;
+    }
+
+    .accordion-faq .accordion-button::after {
+      display: none !important;
+    }
+
+    .accordion-faq .accordion-button.collapsed {
+      background: #ffffff;
+      color: #222222;
+    }
+
+    /* Open header (covers first frame before .collapsing is applied) */
+    .accordion-faq .accordion-button:not(.collapsed) {
+      background: #4e2fff;
+      color: #ffffff;
+    }
+
+    /* While panel is open or height is animating, header stays purple (overrides .collapsed during close animation) */
+    .accordion-faq .accordion-item:has(.accordion-collapse.show) .accordion-button,
+    .accordion-faq .accordion-item:has(.accordion-collapse.collapsing) .accordion-button {
+      background: #4e2fff;
+      color: #ffffff;
+    }
+
+    .faq-question {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .faq-icon-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #4e2fff;
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.9rem;
+      line-height: 1;
+      transition:
+        background 0.2s ease,
+        color 0.2s ease;
+    }
+
+    .accordion-faq .faq-icon-btn i {
+      display: block;
+      transition: transform 0.2s ease;
+    }
+
+    .accordion-faq .accordion-button:not(.collapsed) .faq-icon-btn {
+      background: #ffffff;
+      color: #4e2fff;
+    }
+
+    .accordion-faq .accordion-button:not(.collapsed) .faq-icon-btn i {
+      transform: rotate(45deg);
+    }
+
+    .accordion-faq .accordion-item:has(.accordion-collapse.show) .faq-icon-btn,
+    .accordion-faq .accordion-item:has(.accordion-collapse.collapsing) .faq-icon-btn {
+      background: #ffffff;
+      color: #4e2fff;
+    }
+
+    .accordion-faq .accordion-item:has(.accordion-collapse.show) .faq-icon-btn i,
+    .accordion-faq .accordion-item:has(.accordion-collapse.collapsing) .faq-icon-btn i {
+      transform: rotate(45deg);
+    }
+
+    .accordion-faq .accordion-header {
+      margin-bottom: 0;
+    }
+
+    .accordion-faq .accordion-button:focus {
+      box-shadow: none;
+    }
+
+    .accordion-faq .accordion-button:focus-visible {
+      outline: 2px solid #4e2fff;
+      outline-offset: 2px;
+      z-index: 2;
+    }
+
+    .accordion-faq .accordion-body {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 130%;
+      letter-spacing: -0.02em;
+      text-transform: capitalize;
+      padding: 0 1.25rem 1.25rem 1.25rem;
+      padding-top: 0;
+      margin-top: 0;
+      color: #222222;
+      background: transparent;
+    }
+
+    .accordion-faq .accordion-item:has(.accordion-collapse.show) .accordion-body,
+    .accordion-faq .accordion-item:has(.accordion-collapse.collapsing) .accordion-body {
+      color: #ffffff;
+    }
+
+    /* Shorter height animation = less time where question/answer feel out of sync */
+    .accordion-faq .accordion-collapse {
+      transition: height 0.2s ease;
+    }
+
+    /* Shared with footer — black + top-left purple glow */
+    .cta-section-bg {
+      position: relative;
+      overflow: hidden;
+      background: #000000;
+    }
+
+    .cta-section-bg::before {
+      content: '';
+      position: absolute;
+      top: -25%;
+      left: -15%;
+      width: 70%;
+      max-width: 720px;
+      height: 120%;
+      background: radial-gradient(
+        ellipse 80% 60% at 15% 15%,
+        rgba(78, 47, 255, 0.38) 0%,
+        rgba(78, 47, 255, 0.08) 45%,
+        transparent 70%
+      );
+      pointer-events: none;
+    }
+
+    .cta-section {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+
+    @media (min-width: 992px) {
+      .cta-section {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+      }
+    }
+
+    .cta-section-bg .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .site-footer {
+      background: #000000;
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+
+    @media (min-width: 992px) {
+      .site-footer {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+      }
+    }
+
+    .footer-brand {
+      font-family: 'Darker Grotesque', system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 50px;
+      line-height: 48px;
+      letter-spacing: -0.97px;
+      color: #ffffff;
+      margin: 0 0 1.75rem;
+    }
+
+    @media (max-width: 767px) {
+      .footer-brand {
+        font-size: 2.25rem;
+        line-height: 1.1;
+      }
+    }
+
+    .footer-col-title {
+      font-family: 'Darker Grotesque', system-ui, sans-serif;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 30px;
+      letter-spacing: 0;
+      color: #ffffff;
+      text-transform: uppercase;
+      margin: 0 0 1.25rem;
+    }
+
+    .footer-contact-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    @media (min-width: 576px) {
+      .footer-contact-stack {
+        gap: 1.25rem;
+      }
+    }
+
+    .footer-contact-row {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 100%;
+      letter-spacing: 0;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin: 0;
+    }
+
+    .footer-contact-row a {
+      color: #ffffff !important;
+      text-decoration: none;
+    }
+
+    .footer-contact-row a:hover {
+      opacity: 0.85;
+    }
+
+    .footer-contact-row i {
+      width: 1.1rem;
+      flex-shrink: 0;
+      opacity: 0.95;
+    }
+
+    .footer-link-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .footer-link-list li {
+      margin-bottom: 0.35rem;
+    }
+
+    .footer-link-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .footer-link-list a {
+      font-family: 'Darker Grotesque', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 34px;
+      letter-spacing: 0;
+      color: #ffffff !important;
+      text-decoration: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .footer-link-list a:hover {
+      opacity: 0.8;
+    }
+
+    .site-footer .footer-copyright {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.55);
+      margin: 0;
+    }
+
+    .cta-headline {
+      font-family: 'Darker Grotesque', system-ui, sans-serif;
+      font-weight: 700;
+      font-size: 50px;
+      line-height: 110%;
+      letter-spacing: -1px;
+      color: #ffffff;
+      margin: 0 0 1rem;
+    }
+
+    @media (max-width: 767px) {
+      .cta-headline {
+        font-size: 2rem;
+        letter-spacing: -0.5px;
+      }
+    }
+
+    .cta-lede {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 30px;
+      letter-spacing: 0;
+      color: #ffffff;
+      margin: 0;
+      max-width: 42rem;
+    }
+
+    .social a {
+      width: 40px;
+      height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+      transition: background 0.2s;
+    }
+
+    .social a:hover {
+      background: #6343FF;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fixed header (outside hero so it doesn’t scroll away with the hero block) -->
+  <nav class="site-navbar navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container py-2">
+        <a class="navbar-brand architect-brand" href="#">ARCHITECT</a>
+        <button
+          class="navbar-toggler d-lg-none border-0 shadow-none px-2"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#navSidebar"
+          aria-controls="navSidebar"
+          aria-label="Open menu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="d-none d-lg-flex ms-auto align-items-center gap-lg-1 gap-xl-2">
+          <ul class="navbar-nav flex-row align-items-center gap-lg-1 gap-xl-2 mb-0">
+            <li class="nav-item"><a class="nav-link nav-link-main px-2 px-lg-1" href="#home">Home</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-main px-2 px-lg-1" href="#services">Services</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-main px-2 px-lg-1" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-main px-2 px-lg-1" href="#contact">Contact</a></li>
+            <li class="nav-item ms-lg-2">
+              <a class="btn btn-nav-cta" href="#cta">Get In Touch</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+  </nav>
+
+  <!-- Hero (same gradient as header) -->
+  <div class="hero-banner" id="home">
+    <header class="hero-glow text-white py-5">
+      <div class="container py-5 text-center">
+        <h1 class="hero-title mb-4 px-md-5 mx-auto" style="max-width: 1000px;">
+          Your Trusted <span class="text-gradient">Digital Marketing</span> Freelancer in India
+        </h1>
+        <p class="hero-subtext mx-auto mb-5" style="max-width: 1040px;">
+          Not getting enough leads from your website? As a digital marketer freelancer, we help small businesses and local brands build a powerful digital presence with simple strategies that actually bring in leads and enquiries to deliver real, measurable results that matter. If you are searching for a digital marketing freelancer near me, you’re in the right place.
+        </p>
+        <div class="hero-cta-row">
+          <a href="#cta" class="btn-hero-primary">Get in Touch <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+          <a href="#contact" class="btn-hero-secondary">Book Your Free Consultation</a>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <!-- Services intro -->
+  <section id="about" class="py-5 bg-white">
+    <div class="container">
+      <div class="row align-items-start g-4 g-xl-5">
+        <div class="col-12 col-md-6">
+          <h2 class="section-intro-heading mb-0 text-start">
+            Freelance Digital Marketing<br>
+            Services in Bangalore
+          </h2>
+        </div>
+        <div class="col-12 col-md-6">
+          <p class="section-intro-body mb-4 text-start">
+            As a Bangalore region digital marketer freelancer with 4+ years of experience, we help businesses grow online through strategies that focus on getting you more leads and good ROI. Our freelance digital marketing services include SEO, Social Media Marketing, Pay Per Click (PPC), and customized campaigns to help you get noticed, attract the right customers, and grow steadily.
+          </p>
+          <p class="section-intro-body mb-0 text-start">
+            We believe in keeping things simple as transparent communication, strategic execution, and complete focus on delivering measurable results for your business.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats: outer .container = page column; .stats-section = full width of that column (image); .stats-panel = inner layer -->
+  <section class="py-4 py-md-5 bg-white">
+    <div class="container">
+      <div class="stats-section">
+        <div class="stats-panel">
+          <div class="stats-grid">
+            <div class="text-center">
+              <div class="stat-number">80+</div>
+              <div class="stat-label">Total Clients</div>
+            </div>
+            <div class="text-center">
+              <div class="stat-number">150+</div>
+              <div class="stat-label">Successful Campaigns</div>
+            </div>
+            <div class="text-center">
+              <div class="stat-number">4+</div>
+              <div class="stat-label">Years of Experience</div>
+            </div>
+            <div class="text-center">
+              <div class="stat-number">98%</div>
+              <div class="stat-label">Client Satisfaction</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Platforms (logos via Simple Icons CDN: https://simpleicons.org ) -->
+  <section class="py-5 bg-light" aria-label="Platforms and tools">
+    <div class="container">
+      <h2 class="platforms-heading mb-4 mb-md-5">Platforms &amp; Tools We Use for Real Results</h2>
+
+      <div class="platform-marquee" role="presentation">
+        <div class="platform-marquee__track">
+          <div class="platform-marquee__half">
+            <div class="platform-marquee-card">
+              <img src="https://cdn.simpleicons.org/googleads/4285F4" alt="" height="50" width="50" loading="lazy">
+              <span>Google Ads</span>
+            </div>
+            <div class="platform-marquee-card">
+              <img src="https://cdn.simpleicons.org/meta/0668E1" alt="" height="50" width="50" loading="lazy">
+              <span>Meta</span>
+            </div>
+            <div class="platform-marquee-card">
+              <img src="https://cdn.simpleicons.org/googlesearchconsole/458CF4" alt="" height="50" width="50" loading="lazy">
+              <span>Google Search Console</span>
+            </div>
+            <div class="platform-marquee-card">
+              <img src="https://cdn.simpleicons.org/googleanalytics/E37400" alt="" height="50" width="50" loading="lazy">
+              <span>Google Analytics</span>
+            </div>
+            <div class="platform-marquee-card">
+              <img src="https://cdn.simpleicons.org/semrush/FF642D" alt="" height="50" width="50" loading="lazy">
+              <span>SEMrush</span>
+            </div>
+          </div>
+          <div class="platform-marquee__half" aria-hidden="true">
+            <div class="platform-marquee-card">
+              <img src="https://cdn.simpleicons.org/googleads/4285F4" alt="" height="50" width="50" loading="lazy">
+              <span>Google Ads</span>
+            </div>
+            <div class="platform-marquee-card">
+              <img src="https://cdn.simpleicons.org/meta/0668E1" alt="" height="50" width="50" loading="lazy">
+              <span>Meta</span>
+            </div>
+            <div class="platform-marquee-card">
+              <img src="https://cdn.simpleicons.org/googlesearchconsole/458CF4" alt="" height="50" width="50" loading="lazy">
+              <span>Google Search Console</span>
+            </div>
+            <div class="platform-marquee-card">
+              <img src="https://cdn.simpleicons.org/googleanalytics/E37400" alt="" height="50" width="50" loading="lazy">
+              <span>Google Analytics</span>
+            </div>
+            <div class="platform-marquee-card">
+              <img src="https://cdn.simpleicons.org/semrush/FF642D" alt="" height="50" width="50" loading="lazy">
+              <span>SEMrush</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="platform-marquee platform-marquee--reverse" role="presentation">
+        <div class="platform-marquee__track">
+          <div class="platform-marquee__half">
+            <div class="platform-marquee-card">
+              <img src="https://static.ahrefs.com/apple-touch-icon-152x152.png?v=2" alt="" height="50" width="50" loading="lazy">
+              <span>Ahrefs</span>
+            </div>
+            <div class="platform-marquee-card">
+              <img src="https://cdn.simpleicons.org/mailchimp/241C24" alt="" height="50" width="50" loading="lazy">
+              <span>Mailchimp</span>
+            </div>
+            <div class="platform-marquee-card">
+              <img src="https://cdn.simpleicons.org/wordpress/21759B" alt="" height="50" width="50" loading="lazy">
+              <span>WordPress</span>
+            </div>
+            <div class="platform-marquee-card">
+              <img src="https://cdn.simpleicons.org/shopify/7AB55C" alt="" height="50" width="50" loading="lazy">
+              <span>Shopify</span>
+            </div>
+            <div class="platform-marquee-card">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="" height="50" width="50" loading="lazy">
+              <span>LinkedIn Ads</span>
+            </div>
+          </div>
+          <div class="platform-marquee__half" aria-hidden="true">
+            <div class="platform-marquee-card">
+              <img src="https://static.ahrefs.com/apple-touch-icon-152x152.png?v=2" alt="" height="50" width="50" loading="lazy">
+              <span>Ahrefs</span>
+            </div>
+            <div class="platform-marquee-card">
+              <img src="https://cdn.simpleicons.org/mailchimp/241C24" alt="" height="50" width="50" loading="lazy">
+              <span>Mailchimp</span>
+            </div>
+            <div class="platform-marquee-card">
+              <img src="https://cdn.simpleicons.org/wordpress/21759B" alt="" height="50" width="50" loading="lazy">
+              <span>WordPress</span>
+            </div>
+            <div class="platform-marquee-card">
+              <img src="https://cdn.simpleicons.org/shopify/7AB55C" alt="" height="50" width="50" loading="lazy">
+              <span>Shopify</span>
+            </div>
+            <div class="platform-marquee-card">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="" height="50" width="50" loading="lazy">
+              <span>LinkedIn Ads</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Detailed services -->
+  <section id="services" class="py-5 bg-white">
+    <div class="container">
+      <h2 class="services-section-heading mb-3 mb-md-4 px-2">Freelance digital marketing services built around your goals</h2>
+      <p class="services-section-lead mb-4 mb-md-5 px-2">
+        As a digital marketer freelancer, we provide complete solutions based on what your business actually needs right now. Whether you are a local business or a growing brand, our focus remains on practical strategies that give consistent and measurable results.
+      </p>
+      <div class="services-grid">
+        <div class="services-grid__cell services-grid__cell--2">
+          <article class="service-card">
+            <span class="service-card__badge">01</span>
+            <a href="#services" class="service-card__arrow" aria-label="SEO"><span class="service-card__arrow-inner"><i class="bi bi-arrow-right service-card__arrow-icon"></i></span></a>
+            <div class="service-card__body">
+              <h3 class="service-card-title">SEO</h3>
+              <p class="service-card-text">Improve your website&apos;s visibility on search engines and attract the right audience. Our <span class="service-card__caps">SEO</span> Work process includes keyword planning, on-page improvements, and technical error corrections to ensure steady growth in organic traffic and long-term search performance.</p>
+            </div>
+          </article>
+        </div>
+        <div class="services-grid__cell services-grid__cell--2">
+          <article class="service-card">
+            <span class="service-card__badge">02</span>
+            <a href="#services" class="service-card__arrow" aria-label="Google Ads"><span class="service-card__arrow-inner"><i class="bi bi-arrow-right service-card__arrow-icon"></i></span></a>
+            <div class="service-card__body">
+              <h3 class="service-card-title">Google Ads</h3>
+              <p class="service-card-text">Reach Customers Who Are Interested In Searching For Your Services. We Create And Manage Google Ads Campaigns With Proper Targeting, Budget Control, And Continuous Monitoring To Improve Lead Quality.</p>
+            </div>
+          </article>
+        </div>
+        <div class="services-grid__cell services-grid__cell--3">
+          <article class="service-card">
+            <span class="service-card__badge">03</span>
+            <a href="#services" class="service-card__arrow" aria-label="Meta Ads"><span class="service-card__arrow-inner"><i class="bi bi-arrow-right service-card__arrow-icon"></i></span></a>
+            <div class="service-card__body">
+              <h3 class="service-card-title">Meta Ads</h3>
+              <p class="service-card-text">We Manage Facebook And Instagram Campaigns To Help Your Business Connect With The Right Audiences, Test Creatives, And Improve Conversions Over Time.</p>
+            </div>
+          </article>
+        </div>
+        <div class="services-grid__cell services-grid__cell--3">
+          <article class="service-card">
+            <span class="service-card__badge">04</span>
+            <a href="#services" class="service-card__arrow" aria-label="Local SEO"><span class="service-card__arrow-inner"><i class="bi bi-arrow-right service-card__arrow-icon"></i></span></a>
+            <div class="service-card__body">
+              <h3 class="service-card-title">Local SEO</h3>
+              <p class="service-card-text">Local Visibility Plays An Important Role In Business Growth. We Optimize Maps, Citations, And Local Content So Nearby Customers Find You First.</p>
+            </div>
+          </article>
+        </div>
+        <div class="services-grid__cell services-grid__cell--3">
+          <article class="service-card">
+            <span class="service-card__badge">05</span>
+            <a href="#services" class="service-card__arrow" aria-label="Web Development"><span class="service-card__arrow-inner"><i class="bi bi-arrow-right service-card__arrow-icon"></i></span></a>
+            <div class="service-card__body">
+              <h3 class="service-card-title">Web Development</h3>
+              <p class="service-card-text">We Build Fast, Responsive, And User-Friendly Websites That Load Quickly, Work On Every Device, And Support Your Marketing Goals.</p>
+            </div>
+          </article>
+        </div>
+        <div class="services-grid__cell services-grid__cell--6">
+          <article class="service-card">
+            <span class="service-card__badge">06</span>
+            <a href="#services" class="service-card__arrow" aria-label="Link Building"><span class="service-card__arrow-inner"><i class="bi bi-arrow-right service-card__arrow-icon"></i></span></a>
+            <div class="service-card__body">
+              <h3 class="service-card-title">Link Building</h3>
+              <p class="service-card-text">We Develop Quality Backlinks From Relevant And Trusted Sources To Strengthen Authority, Improve Rankings, And Support Long-Term SEO Performance.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="why-section py-5">
+    <div class="container">
+      <h2 class="why-heading mb-4 mb-md-5">Why Choose Us?</h2>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon-wrap" aria-hidden="true"><img src="why-1.svg" alt="" width="48" height="48" loading="lazy" decoding="async" /></div>
+          <h3 class="why-card-title">Results-Driven Approach</h3>
+          <p class="why-card-text">Every strategy is built with clear business goals in mind. The focus remains on measurable outcomes such as leads, conversions, and growth, rather than metrics that do not contribute to actual business performance.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon-wrap" aria-hidden="true"><img src="why-2.svg" alt="" width="48" height="48" loading="lazy" decoding="async" /></div>
+          <h3 class="why-card-title">4+ Years Of Industry Experience</h3>
+          <p class="why-card-text">Hands-On Experience Across Industries Helps Us Understand What Works In Real Campaigns And How To Adapt Quickly When Markets Or Platforms Change.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon-wrap" aria-hidden="true"><img src="why-3.svg" alt="" width="48" height="48" loading="lazy" decoding="async" /></div>
+          <h3 class="why-card-title">Affordable &amp; ROI-Focused</h3>
+          <p class="why-card-text">Budgets Are Planned Around Outcomes You Care About, With Transparent Reporting So You Always Know How Spend Translates Into Leads And Revenue.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon-wrap" aria-hidden="true"><img src="why-4.svg" alt="" width="48" height="48" loading="lazy" decoding="async" /></div>
+          <h3 class="why-card-title">End-To-End Digital Services</h3>
+          <p class="why-card-text">From Strategy And Creative To Ads, SEO, And Analytics, You Get One Coherent Plan Instead Of Disconnected Vendors And Mixed Messaging.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon-wrap" aria-hidden="true"><img src="why-5.svg" alt="" width="48" height="48" loading="lazy" decoding="async" /></div>
+          <h3 class="why-card-title">Dedicated Support</h3>
+          <p class="why-card-text">Direct Access To The Person Doing The Work Means Faster Answers, Clearer Updates, And No Endless Escalation Loops When You Need Help.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon-wrap" aria-hidden="true"><img src="why-6.svg" alt="" width="48" height="48" loading="lazy" decoding="async" /></div>
+          <h3 class="why-card-title">Proven Track Record</h3>
+          <p class="why-card-text">Campaigns Are Documented With Before-And-After Metrics So You Can See Progress On Rankings, Leads, And Cost Per Acquisition Over Time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How We Deliver Results -->
+  <section id="case-studies" class="how-section py-5">
+    <div class="container">
+      <div class="row g-4 g-lg-5 align-items-start">
+        <div class="col-lg-5">
+          <h2 class="how-heading me-5 pe-5">How We Deliver Results</h2>
+          <a href="#contact" class="how-learn-btn">Learn More <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="col-lg-7">
+          <article class="how-step">
+            <img class="how-step-img" src="how-1.png" alt="" width="150" height="109" loading="lazy" decoding="async" />
+            <div>
+              <h3 class="how-step-title">Research</h3>
+              <p class="how-step-text">We maintain clear communication and provide regular updates. Every project is handled with attention and responsibility to ensure smooth coordination.</p>
+            </div>
+          </article>
+          <article class="how-step">
+            <img class="how-step-img" src="how-2.png" alt="" width="150" height="109" loading="lazy" decoding="async" />
+            <div>
+              <h3 class="how-step-title">Strategy</h3>
+              <p class="how-step-text">Based on research, a clear and structured plan is developed. This includes selecting the right channels, defining goals, and setting realistic timelines.</p>
+            </div>
+          </article>
+          <article class="how-step">
+            <img class="how-step-img" src="how-3.png" alt="" width="150" height="109" loading="lazy" decoding="async" />
+            <div>
+              <h3 class="how-step-title">Execution</h3>
+              <p class="how-step-text">All planned activities are implemented with attention to detail. From content updates to ad campaigns, each step is carried out in a structured and consistent manner.</p>
+            </div>
+          </article>
+          <article class="how-step">
+            <img class="how-step-img" src="how-4.png" alt="" width="150" height="109" loading="lazy" decoding="async" />
+            <div>
+              <h3 class="how-step-title">Optimization</h3>
+              <p class="how-step-text">Campaigns are reviewed regularly to identify areas for improvement. Necessary adjustments are made to improve performance and efficiency.</p>
+            </div>
+          </article>
+          <article class="how-step">
+            <img class="how-step-img" src="how-5.png" alt="" width="150" height="109" loading="lazy" decoding="async" />
+            <div>
+              <h3 class="how-step-title">Improve &amp; Grow</h3>
+              <p class="how-step-text">We continue to refine strategies based on performance data. As results improve, efforts are scaled to support long-term and sustainable business growth.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials-section py-5">
+    <div class="container">
+      <div class="row g-4 g-lg-5 align-items-start">
+        <div class="col-lg-4">
+          <h2 class="testimonials-heading">What Our Clients Say</h2>
+        </div>
+        <div class="col-lg-8">
+          <div
+            class="testimonials-scroller"
+            id="testimonialsScroller"
+            role="region"
+            aria-label="Client testimonials"
+            tabindex="0"
+          >
+            <article class="testimonial-slide">
+              <div class="testimonial-card-frame">
+                <div class="testimonial-card-panel">
+                  <p class="testimonial-quote">“Honestly, attracting customers used to be a real challenge for us. But after improving our online presence with this talented team and running targeted campaigns, we started receiving consistent enquiries and bookings. We're really glad we made this decision”</p>
+                  <hr class="testimonial-divider" />
+                  <div class="d-flex justify-content-between align-items-end gap-3 mt-auto">
+                    <div>
+                      <div class="testimonial-name">Ravi Kumar</div>
+                      <div class="testimonial-role">Restaurant Owner, Bangalore</div>
+                    </div>
+                    <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                      <i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="testimonial-slide">
+              <div class="testimonial-card-frame">
+                <div class="testimonial-card-panel">
+                  <p class="testimonial-quote">“The process was clear and communication was consistent. Our social media presence improved significantly, and online orders increased within a few months. The team was very friendly and supportive.”</p>
+                  <hr class="testimonial-divider" />
+                  <div class="d-flex justify-content-between align-items-end gap-3 mt-auto">
+                    <div>
+                      <div class="testimonial-name">Priya Sharma</div>
+                      <div class="testimonial-role">Boutique Owner, Indiranagar</div>
+                    </div>
+                    <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                      <i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="testimonial-slide">
+              <div class="testimonial-card-frame">
+                <div class="testimonial-card-panel">
+                  <p class="testimonial-quote">“A structured approach to SEO and advertising helped us improve traffic and lead generation for our newly started Edtech. The results were steady and aligned with our expectations.”</p>
+                  <hr class="testimonial-divider" />
+                  <div class="d-flex justify-content-between align-items-end gap-3 mt-auto">
+                    <div>
+                      <div class="testimonial-name">Arun Mehta</div>
+                      <div class="testimonial-role">EdTech Startup, Koramangala</div>
+                    </div>
+                    <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                      <i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i><i class="bi bi-star-fill" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="d-flex gap-2 mt-3">
+            <button type="button" class="testimonials-nav-btn testimonials-nav-btn--prev" id="testimonialsPrev" aria-label="Previous testimonial">
+              <i class="bi bi-arrow-left" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="testimonials-nav-btn testimonials-nav-btn--next" id="testimonialsNext" aria-label="Next testimonial">
+              <i class="bi bi-arrow-right" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-page-section py-5">
+    <div class="container">
+      <h2 class="faq-heading">FAQs</h2>
+      <div class="faq-wrap">
+        <div class="accordion accordion-faq" id="faqAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
+                <span class="faq-question">How long does it take to see results from digital marketing?</span>
+                <span class="faq-icon-btn" aria-hidden="true"><i class="fa-solid fa-plus"></i></span>
+              </button>
+            </h2>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Paid campaigns can deliver results within a short period, while SEO typically takes 3 to 6 months to show noticeable improvements.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
+                <span class="faq-question">How much should I invest in digital marketing?</span>
+                <span class="faq-icon-btn" aria-hidden="true"><i class="fa-solid fa-plus"></i></span>
+              </button>
+            </h2>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Investment depends on your goals, industry, and channels. We align budgets with expected outcomes and scale spend as performance proves out.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
+                <span class="faq-question">How do you measure success?</span>
+                <span class="faq-icon-btn" aria-hidden="true"><i class="fa-solid fa-plus"></i></span>
+              </button>
+            </h2>
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                We track KPIs you care about—leads, conversions, revenue, and cost per acquisition—with clear dashboards and scheduled reporting.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">
+                <span class="faq-question">What makes your service different?</span>
+                <span class="faq-icon-btn" aria-hidden="true"><i class="fa-solid fa-plus"></i></span>
+              </button>
+            </h2>
+            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                You get direct access to the strategist doing the work, transparent reporting, and a full-funnel approach across SEO, ads, and content.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">
+                <span class="faq-question">What platforms do you work on?</span>
+                <span class="faq-icon-btn" aria-hidden="true"><i class="fa-solid fa-plus"></i></span>
+              </button>
+            </h2>
+            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                We work across Google Ads, Meta, LinkedIn, your website stack, and analytics tools—whatever fits your audience and goals.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6" aria-expanded="false" aria-controls="faq6">
+                <span class="faq-question">Will digital marketing work for my local business?</span>
+                <span class="faq-icon-btn" aria-hidden="true"><i class="fa-solid fa-plus"></i></span>
+              </button>
+            </h2>
+            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                Yes. Local SEO, maps, and targeted ads help nearby customers find you; we tailor campaigns to your catchment area and service radius.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7" aria-expanded="false" aria-controls="faq7">
+                <span class="faq-question">How do I know my money is being used effectively?</span>
+                <span class="faq-icon-btn" aria-hidden="true"><i class="fa-solid fa-plus"></i></span>
+              </button>
+            </h2>
+            <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">
+                You receive clear spend breakdowns, performance reports, and recommendations so you can see how budgets map to leads, sales, and measurable outcomes.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section id="cta" class="cta-section cta-section-bg text-white">
+    <div class="container">
+      <div class="row align-items-center gy-4 gy-lg-0">
+        <div class="col-lg-7">
+          <h2 class="cta-headline">Ready to grow your business<br />online?</h2>
+          <p class="cta-lede">
+            Let’s discuss your business and goals and we will create a clear plan to achieve that. We provide structured and reliable support to help your business grow steadily.
+          </p>
+        </div>
+        <div class="col-lg-5 d-flex justify-content-lg-end justify-content-start align-items-center pt-2 pt-lg-0">
+          <a href="#contact" class="btn-hero-primary">Get in Touch <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact" class="site-footer text-white">
+    <div class="container">
+      <div class="row g-5 g-lg-5 align-items-start">
+        <div class="col-lg-4">
+          <div class="footer-brand">GiriMarketer</div>
+          <p class="footer-col-title">Contact us</p>
+          <div class="footer-contact-stack">
+            <div class="footer-contact-row">
+              <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+              <a href="mailto:info@girimarketer.com">info@girimarketer.com</a>
+            </div>
+            <div class="footer-contact-row">
+              <i class="fa-solid fa-phone" aria-hidden="true"></i>
+              <a href="tel:+917075473915">+91 7075473915</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <p class="footer-col-title">Quick links</p>
+          <ul class="footer-link-list">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#">Blogs</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <p class="footer-col-title">Services</p>
+          <ul class="footer-link-list">
+            <li><a href="#services">SEO</a></li>
+            <li><a href="#services">Google Ads</a></li>
+            <li><a href="#services">Meta Ads</a></li>
+            <li><a href="#services">Content Marketing</a></li>
+            <li><a href="#services">Link Building</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr class="border-white border-opacity-10 my-4 my-lg-5">
+      <p class="footer-copyright text-center">&copy; <span id="y"></span> GiriMarketer. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Offcanvas must be a direct child of body (not inside fixed nav) — avoids broken fixed/scroll on mobile -->
+  <div
+    class="offcanvas offcanvas-end nav-offcanvas-sidebar text-white"
+    tabindex="-1"
+    id="navSidebar"
+    aria-label="Site menu"
+    data-bs-scroll="false"
+    data-bs-backdrop="true"
+  >
+    <div class="offcanvas-header">
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close menu"></button>
+    </div>
+    <div class="offcanvas-body pt-0 pb-4">
+      <ul class="navbar-nav flex-column gap-1 mb-3">
+        <li class="nav-item">
+          <a class="nav-link nav-link-main" href="#home" data-bs-dismiss="offcanvas">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-main" href="#services" data-bs-dismiss="offcanvas">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-main" href="#about" data-bs-dismiss="offcanvas">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-main" href="#contact" data-bs-dismiss="offcanvas">Contact</a>
+        </li>
+      </ul>
+      <a class="btn btn-nav-cta w-100" href="#cta" data-bs-dismiss="offcanvas">Get In Touch</a>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    (function () {
+      var scroller = document.getElementById('testimonialsScroller');
+      var prev = document.getElementById('testimonialsPrev');
+      var next = document.getElementById('testimonialsNext');
+      if (!scroller || !prev || !next) return;
+      function scrollAmount() {
+        var slide = scroller.querySelector('.testimonial-slide');
+        if (!slide) return scroller.clientWidth;
+        return slide.getBoundingClientRect().width + 16;
+      }
+      function updateNavButtons() {
+        var maxScroll = Math.max(0, scroller.scrollWidth - scroller.clientWidth);
+        var left = scroller.scrollLeft;
+        var eps = 4;
+        prev.disabled = left <= eps;
+        next.disabled = left >= maxScroll - eps;
+      }
+      prev.addEventListener('click', function () {
+        if (prev.disabled) return;
+        scroller.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+      });
+      next.addEventListener('click', function () {
+        if (next.disabled) return;
+        scroller.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+      });
+      scroller.addEventListener('scroll', updateNavButtons);
+      window.addEventListener('resize', updateNavButtons);
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(updateNavButtons);
+      }
+      updateNavButtons();
+    })();
+    (function () {
+      var el = document.getElementById('navSidebar');
+      if (!el || typeof bootstrap === 'undefined') return;
+      window.addEventListener(
+        'resize',
+        function () {
+          if (window.innerWidth >= 992) {
+            var inst = bootstrap.Offcanvas.getInstance(el);
+            if (inst) inst.hide();
+          }
+        },
+        { passive: true }
+      );
+    })();
+  </script>
+</body>
+</html>
